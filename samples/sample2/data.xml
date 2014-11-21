@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog>
+  <cd>cd1
+    <title a="1">Emp</title>
+    <artist>Bob Dylan1</artist>
+  </cd>
+  <cd>cd2
+    <title>Hide</title>
+    <artist>Bonnie Tyler</artist>
+  </cd>
+  <cd>cd3
+    <title>Great</title>
+    <artist>Dolly Parton</artist>
+  </cd>
+  <cd>cd4
+    <title a="2">Emp</title>
+    <artist>Bob Dylan2</artist>
+  </cd>
+</catalog>

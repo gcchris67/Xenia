@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+	<psp pos="110" ez="50">
+		<maint artnr="123" />
+		<maint-pos artnr="MAINT3" />
+		<maint-pos artnr="QUALIFM" />
+	</psp>
+	<psp pos="110" ez="50">
+		<maint artnr="123" />
+		<maint-pos artnr="MAINT3" />
+		<maint-pos artnr="QUALIFM" />
+	</psp>
+</project>
