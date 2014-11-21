@@ -19,7 +19,7 @@ import tools.Tools;
 import xsltjava.XsltJava;
 
 public class Main extends javax.swing.JFrame {
-//test
+
     static final Logger logger = Logger.getLogger(Main.class.getName());
     XmlEditFrame xmlFrame = new XmlEditFrame("xml");
     XmlEditFrame xslFrame = new XmlEditFrame("xsl");
