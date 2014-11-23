@@ -144,6 +144,17 @@ public class Tools {
         return guessedEncoding;
     }
 
+    public static String getExceptionStack(Exception ex) {
+        StringBuilder exMssg = new StringBuilder(ex.toString() + "\n");
+
+        StackTraceElement[] trace = ex.getStackTrace();
+        for (int i = 0; i < trace.length; i++) {
+            exMssg.append("\tat " + trace[i].toString() + "\n");
+        }
+
+        return exMssg.toString();
+    }
+
     public static void main(String[] args) {
         try {
             File[] files = new File(System.getProperty("user.dir")).listFiles();

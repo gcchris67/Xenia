@@ -1,6 +1,5 @@
 package ui;
 
-import com.Grenzebach.Maorch.Tools.Lib;
 import java.io.File;
 import java.io.StringReader;
 import java.io.StringWriter;
@@ -14,6 +13,7 @@ import javax.xml.transform.stream.StreamSource;
 import org.apache.batik.util.gui.xmleditor.XMLEditorKit;
 import org.apache.batik.util.gui.xmleditor.XMLTextEditor;
 import tools.FileIOcharSet;
+import tools.Tools;
 
 public class XmlEditFrame extends javax.swing.JInternalFrame {
 
@@ -173,18 +173,14 @@ public class XmlEditFrame extends javax.swing.JInternalFrame {
 
             // Configure transformer
             Transformer transformer = TransformerFactory.newInstance().newTransformer();
-//            transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
-//            transformer.setOutputProperty(OutputKeys.METHOD, "xml");
-//            transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
 
             transformer.transform(xmlInput, xmlOutput);
             String newContent = xmlOutput.getWriter().toString();
 
             getXmlTextEditor().setText(newContent);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, Lib.getExceptionStack(ex));
+            JOptionPane.showMessageDialog(this, Tools.getExceptionStack(ex));
         }
     }//GEN-LAST:event_jMenuItemPrettyActionPerformed
 

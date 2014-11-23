@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:stylesheet 
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+xmlns:fn="http://www.w3.org/2005/xpath-functions"
+version="1.0">
+
   <xsl:output method="html"/>
   <!-- match the document root -->
   <xsl:template match="/">
+
+	<xsl:value-of select="fn:matches('abracadabra', 'bra')" />
+	<xsl:value-of select="concat('ABC','DEF')" />
+
     <html>
       <head>
         <title>Discussion Forum Home Page</title>

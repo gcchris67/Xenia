@@ -1,6 +1,5 @@
 package ui;
 
-import com.Grenzebach.Maorch.Tools.Lib;
 import java.beans.PropertyVetoException;
 import java.io.File;
 import java.io.FileInputStream;
@@ -51,6 +50,22 @@ public class Main extends javax.swing.JFrame {
             ex.printStackTrace();
             logger.severe(ex.getMessage());
         }
+
+        if (xeniaProperties.getProperty("xslFile") != null) {
+            try {
+                File f = new File(xeniaProperties.getProperty("xslFile"));
+                loadXfile(f);
+            } catch (Exception ex) {
+            }
+        }
+        
+        if (xeniaProperties.getProperty("xmlFile") != null) {
+            try {
+                File f = new File(xeniaProperties.getProperty("xmlFile"));
+                loadXfile(f);
+            } catch (Exception ex) {
+            }
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -90,11 +105,11 @@ public class Main extends javax.swing.JFrame {
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 644, Short.MAX_VALUE)
+            .addGap(0, 859, Short.MAX_VALUE)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 454, Short.MAX_VALUE)
+            .addGap(0, 588, Short.MAX_VALUE)
         );
 
         jMenuFile.setText("File");
@@ -238,7 +253,7 @@ public class Main extends javax.swing.JFrame {
             }
 
             File xslFile = fc.getSelectedFile();
-            xeniaProperties.setProperty("xslFile", xslFile.getParentFile().getAbsolutePath());
+            xeniaProperties.setProperty("xslFile", xslFile.getAbsolutePath());
             loadXfile(xslFile);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, Arrays.toString(ex.getStackTrace()));
@@ -327,7 +342,8 @@ public class Main extends javax.swing.JFrame {
             resultFrame.setText(result, false);
 
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, Lib.getExceptionStack(ex));
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+//            JOptionPane.showMessageDialog(this, Tools.getExceptionStack(ex));
         }
     }//GEN-LAST:event_jMenuItemProcessActionPerformed
 
@@ -361,6 +377,11 @@ public class Main extends javax.swing.JFrame {
 
     public void loadXfile(File xFile) throws IOException, Exception {
         XmlEditFrame internalFrame;
+
+        if (xFile == null) {
+            return;
+        }
+
         if (xFile.getName().toLowerCase().endsWith(".xml")) {
             internalFrame = xmlFrame;
         } else if (xFile.getName().toLowerCase().endsWith(".xsl")) {
@@ -404,7 +425,7 @@ public class Main extends javax.swing.JFrame {
             }
 
             File xmlFile = fc.getSelectedFile();
-            xeniaProperties.setProperty("xmlFile", xmlFile.getParentFile().getAbsolutePath());
+            xeniaProperties.setProperty("xmlFile", xmlFile.getAbsolutePath());
             loadXfile(xmlFile);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, Arrays.toString(ex.getStackTrace()));
@@ -477,7 +498,7 @@ public class Main extends javax.swing.JFrame {
             xmlEditFrame.saveAs(fc.getSelectedFile(), encoding);
             xmlEditFrame.setLoadedFile(fc.getSelectedFile());
 
-            String path = xmlEditFrame.getLoadedFile().getParentFile().getAbsolutePath();
+            String path = xmlEditFrame.getLoadedFile().getAbsolutePath();
             if (xmlEditFrame.getLoadedFile().getName().toLowerCase().endsWith(".xml")) {
                 xeniaProperties.setProperty("xmlFile", path);
             }
